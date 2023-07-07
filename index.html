@@ -9,6 +9,11 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css
+    "
+    />
     <link rel="stylesheet" href="./style.css" />
     <title>Library</title>
   </head>
@@ -31,15 +36,49 @@
       </div>
     </template>
 
-    <div>
+    <div class="main-container">
       <aside class="side-bar">
         <h1>Library</h1>
         <ul id="categories"></ul>
       </aside>
       <main class="container">
-        <h1></h1>
+        <h1>Novels</h1>
         <div class="book-container"></div>
       </main>
+    </div>
+
+    <div id="add-button">
+      <span class="mdi mdi-plus"></span>
+    </div>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <form>
+        <div>
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" />
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <input id="description" name="description" type="text" />
+        </div>
+        <div>
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="reading">Reading</option>
+            <option value="read">Read</option>
+            <option value="planned">Planned</option>
+            <option value="dropped">Dropped</option>
+          </select>
+        </div>
+        <div>
+          <label for="author">Author</label>
+          <input id="author" name="author" type="text" />
+        </div>
+        <div>
+          <label for="pageCount">Page Count</label>
+          <input id="pageCount" name="pageCount" type="number" />
+        </div>
+      </form>
     </div>
   </body>
 </html>
