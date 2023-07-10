@@ -83,7 +83,8 @@ h1 {
   line-height: 2;
   letter-spacing: 2px;
   word-spacing: 2.5px;
-  box-shadow: 1.5px 1.5px 4.75px -0.75px white;
+  box-shadow: 1.5px 1.5px 4.75px -0.75px #ffffff8a;
+  border-radius: 4px;
 }
 
 .book-card > * {
@@ -130,9 +131,9 @@ h1 {
   color: var(--bright-color);
   border-radius: 50%;
   position: absolute;
-  bottom: 32px;
-  right: 32px;
-  font-size: 64px;
+  bottom: 24px;
+  right: 24px;
+  font-size: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,8 +141,8 @@ h1 {
   animation: add-button-flash-anim 1.5s infinite;
   animation-timing-function: ease-out;
   animation-iteration-count: infinite;
-  width: 80px;
-  height: 80px;
+  width: 48px;
+  height: 48px;
   transition: scale 0.3s ease 0s;
 }
 

@@ -80,6 +80,38 @@
       </form>
     </template>
 
+    <template id="book-card-template">
+      <div class="book-card">
+        <div class="book-card__header">
+          <div class="book-card__header__title">
+            <h2>Title</h2>
+          </div>
+          <div class="book-card__header__info">
+            <p>
+              <span class="mdi mdi-text-box-multiple-outline"></span>
+              <span class="page-count">123</span>
+            </p>
+            <p>
+              <span class="mdi mdi-book"></span>
+              <span class="book-type">Novel</span>
+            </p>
+          </div>
+        </div>
+        <div class="book-card__body">
+          <div class="book-card__body__description">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum dolore adipisci, quaerat optio mollitia tenetur.
+          </div>
+        </div>
+        <div class="book-card__footer">
+          <div class="book-card__footer__status">
+            <span class="mdi mdi-book-open-page-variant"></span>
+            <span class="reading-status">Reading</span>
+          </div>
+          <div class="book-card__footer__author">J.R.R Tolkien</div>
+        </div>
+      </div>
+    </template>
+
     <div class="main-container">
       <aside class="side-bar">
         <h1>Library</h1>
@@ -87,39 +119,7 @@
       </aside>
       <main class="container">
         <h1>Novels</h1>
-        <div class="book-container">
-          <div class="book-card">
-            <div class="book-card__header">
-              <div class="book-card__header__title">
-                <h2>
-                  DummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummy
-                </h2>
-              </div>
-              <div class="book-card__header__info">
-                <p>
-                  <span class="mdi mdi-text-box-multiple-outline"></span>
-                  123
-                </p>
-                <p>
-                  <span class="mdi mdi-book"></span>
-                  Novel
-                </p>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <div class="book-card__body__description">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum dolore adipisci, quaerat optio mollitia tenetur.
-              </div>
-            </div>
-            <div class="book-card__footer">
-              <div class="book-card__footer__status">
-                <span class="mdi mdi-book-open-page-variant"></span>
-                Reading
-              </div>
-              <div class="book-card__footer__author">J.R.R Tolkien</div>
-            </div>
-          </div>
-        </div>
+        <div class="book-container"></div>
       </main>
     </div>
 
