@@ -36,6 +36,50 @@
       </div>
     </template>
 
+    <template id="modal-template">
+      <div class="modal-backdrop"></div>
+      <div class="modal-card">
+        <div class="modal-card__header">
+          <h2>Card Title</h2>
+        </div>
+        <div class="modal-card__body"></div>
+      </div>
+    </template>
+
+    <template id="new-book-form-template">
+      <form class="new-book-form">
+        <div class="form-input">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" />
+        </div>
+        <div class="form-input">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" type="text"></textarea>
+        </div>
+        <div class="form-input">
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="reading">Reading</option>
+            <option value="read">Read</option>
+            <option value="planned">Planned</option>
+            <option value="dropped">Dropped</option>
+          </select>
+        </div>
+        <div class="form-input">
+          <label for="author">Author</label>
+          <input id="author" name="author" type="text" />
+        </div>
+        <div class="form-input">
+          <label for="pageCount">Page Count</label>
+          <input id="pageCount" name="pageCount" type="number" />
+        </div>
+        <div class="new-book-form__buttons">
+          <button type="submit">Create</button>
+          <button>Cancel</button>
+        </div>
+      </form>
+    </template>
+
     <div class="main-container">
       <aside class="side-bar">
         <h1>Library</h1>
@@ -43,51 +87,44 @@
       </aside>
       <main class="container">
         <h1>Novels</h1>
-        <div class="book-container"></div>
+        <div class="book-container">
+          <div class="book-card">
+            <div class="book-card__header">
+              <div class="book-card__header__title">
+                <h2>
+                  DummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummyDummy
+                </h2>
+              </div>
+              <div class="book-card__header__info">
+                <p>
+                  <span class="mdi mdi-text-box-multiple-outline"></span>
+                  123
+                </p>
+                <p>
+                  <span class="mdi mdi-book"></span>
+                  Novel
+                </p>
+              </div>
+            </div>
+            <div class="book-card__body">
+              <div class="book-card__body__description">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum dolore adipisci, quaerat optio mollitia tenetur.
+              </div>
+            </div>
+            <div class="book-card__footer">
+              <div class="book-card__footer__status">
+                <span class="mdi mdi-book-open-page-variant"></span>
+                Reading
+              </div>
+              <div class="book-card__footer__author">J.R.R Tolkien</div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
 
     <div id="add-button">
       <span class="mdi mdi-plus"></span>
-    </div>
-    <div class="modal-backdrop"></div>
-    <div class="modal-card">
-      <div class="modal-card__header">
-        <h2>Card Title</h2>
-      </div>
-      <div class="modal-card__body">
-        <form class="new-book-form">
-          <div class="form-input">
-            <label for="title">Title</label>
-            <input id="title" name="title" type="text" />
-          </div>
-          <div class="form-input">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" type="text"></textarea>
-          </div>
-          <div class="form-input">
-            <label for="status">Status</label>
-            <select id="status" name="status">
-              <option value="reading">Reading</option>
-              <option value="read">Read</option>
-              <option value="planned">Planned</option>
-              <option value="dropped">Dropped</option>
-            </select>
-          </div>
-          <div class="form-input">
-            <label for="author">Author</label>
-            <input id="author" name="author" type="text" />
-          </div>
-          <div class="form-input">
-            <label for="pageCount">Page Count</label>
-            <input id="pageCount" name="pageCount" type="number" />
-          </div>
-          <div class="new-book-form__buttons">
-            <button type="submit">Create</button>
-            <button>Cancel</button>
-          </div>
-        </form>
-      </div>
     </div>
   </body>
 </html>
