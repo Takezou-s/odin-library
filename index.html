@@ -15,25 +15,12 @@
     "
     />
     <link rel="stylesheet" href="./style.css" />
+    <script src="app.js" defer></script>
     <title>Library</title>
   </head>
   <body>
     <template id="category-item-template">
       <li class="category-item"><a class="category-item__link"></a></li>
-    </template>
-
-    <template id="book-card-template">
-      <div class="book-card">
-        <div class="book-card__header">
-          <h2 class="book-card__title"></h2>
-          <div class="book-card__header__info">
-            <p class="book-card__header__info__page-count"></p>
-            <p class="book-card__header__info__category"></p>
-          </div>
-        </div>
-        <p class="book-card__description"></p>
-        <div class="book-card__footer"></div>
-      </div>
     </template>
 
     <template id="modal-template">
@@ -119,10 +106,39 @@
       </aside>
       <main class="container">
         <h1>Novels</h1>
-        <div class="book-container"></div>
+        <div class="book-container">
+          <div class="book-card">
+            <div class="book-card__header">
+              <div class="book-card__header__title">
+                <h2>Title</h2>
+              </div>
+              <div class="book-card__header__info">
+                <p>
+                  <span class="mdi mdi-text-box-multiple-outline"></span>
+                  <span class="page-count">123</span>
+                </p>
+                <p>
+                  <span class="mdi mdi-book"></span>
+                  <span class="book-type">Novel</span>
+                </p>
+              </div>
+            </div>
+            <div class="book-card__body">
+              <div class="book-card__body__description">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum dolore adipisci, quaerat optio mollitia tenetur.
+              </div>
+            </div>
+            <div class="book-card__footer">
+              <div class="book-card__footer__status">
+                <span class="mdi mdi-book-open-page-variant"></span>
+                <span class="reading-status">Reading</span>
+              </div>
+              <div class="book-card__footer__author">J.R.R Tolkien</div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
-
     <div id="add-button">
       <span class="mdi mdi-plus"></span>
     </div>
