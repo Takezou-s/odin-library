@@ -52,33 +52,42 @@
     </div>
     <div class="modal-backdrop"></div>
     <div class="modal-card">
-      <form>
-        <div>
-          <label for="title">Title</label>
-          <input id="title" name="title" type="text" />
-        </div>
-        <div>
-          <label for="description">Description</label>
-          <input id="description" name="description" type="text" />
-        </div>
-        <div>
-          <label for="status">Status</label>
-          <select id="status" name="status">
-            <option value="reading">Reading</option>
-            <option value="read">Read</option>
-            <option value="planned">Planned</option>
-            <option value="dropped">Dropped</option>
-          </select>
-        </div>
-        <div>
-          <label for="author">Author</label>
-          <input id="author" name="author" type="text" />
-        </div>
-        <div>
-          <label for="pageCount">Page Count</label>
-          <input id="pageCount" name="pageCount" type="number" />
-        </div>
-      </form>
+      <div class="modal-card__header">
+        <h2>Card Title</h2>
+      </div>
+      <div class="modal-card__body">
+        <form class="new-book-form">
+          <div class="form-input">
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text" />
+          </div>
+          <div class="form-input">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" type="text"></textarea>
+          </div>
+          <div class="form-input">
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="reading">Reading</option>
+              <option value="read">Read</option>
+              <option value="planned">Planned</option>
+              <option value="dropped">Dropped</option>
+            </select>
+          </div>
+          <div class="form-input">
+            <label for="author">Author</label>
+            <input id="author" name="author" type="text" />
+          </div>
+          <div class="form-input">
+            <label for="pageCount">Page Count</label>
+            <input id="pageCount" name="pageCount" type="number" />
+          </div>
+          <div class="new-book-form__buttons">
+            <button type="submit">Create</button>
+            <button>Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
