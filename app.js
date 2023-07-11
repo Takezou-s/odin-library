@@ -1,5 +1,5 @@
 const bookList = [];
-const bookElPair = [];
+const bookTypes = [];
 const categoryItemTemplate = document.getElementById("category-item-template");
 const modalTemplate = document.getElementById("modal-template");
 const newBookFormTemplate = document.getElementById("new-book-form-template");
@@ -11,6 +11,7 @@ const bookContainer = document.querySelector(".book-container");
 let modalBackdropEl;
 let modalCardEl;
 let newBookFormEl;
+let activeBookType;
 
 function closeModal() {
   if (modalBackdropEl) modalBackdropEl.remove();
@@ -79,7 +80,19 @@ function showNewBookForm(book) {
     } else {
       bookList.push(newBook);
     }
-    renderBook(newBook);
+    let bookType = bookTypes.find((x) => x === newBook.bookType);
+    if (!bookType) {
+      bookType = newBook.bookType;
+      bookTypes.push(bookType);
+      renderBookType(bookType);
+    }
+
+    if (activeBookType === bookType) {
+      renderBook(newBook);
+    } else {
+      const bookCard = document.querySelector(`[data-book-id='${book.id}']`);
+      if (bookCard) bookCard.remove();
+    }
     closeModal();
   });
   showModal("New Book", formClone);
@@ -105,6 +118,36 @@ function renderBook(book) {
   bookCard.dataset.bookId = book.id;
   if (!existing) {
     document.querySelector(".book-container").insertAdjacentElement("afterbegin", bookCard);
+  }
+}
+
+function renderBookType(bookType) {
+  const liEl = categoryItemTemplate.content.cloneNode(true).querySelector("li");
+  const anchorEl = liEl.querySelector("a");
+  anchorEl.textContent = bookType;
+  anchorEl.addEventListener("click", (event) => {
+    event.preventDefault();
+    selectBookType(event.target.textContent);
+  });
+
+  document.getElementById("categories").append(liEl);
+}
+
+function selectBookType(bookType) {
+  activeBookType = bookType;
+  document.querySelector(".container>h1").textContent = bookType;
+  const bookArr = bookType ? bookList.filter((x) => x.bookType === bookType) : bookList;
+  document.querySelector(".book-container").innerHTML = "";
+  for (const book of bookArr) {
+    renderBook(book);
+  }
+  const elements = document.querySelectorAll(".category-item__link");
+  for (const element of elements) {
+    if (element.textContent !== bookType) {
+      element.parentElement.classList.remove("active");
+    } else {
+      element.parentElement.classList.add("active");
+    }
   }
 }
 

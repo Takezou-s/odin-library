@@ -61,8 +61,34 @@ h1 {
 .side-bar {
   background-color: var(--info-color);
   flex: 0 0 20%;
-  padding: 1.5rem;
   min-width: 0;
+}
+
+.side-bar > h1 {
+  padding: 1.5rem;
+}
+
+#categories {
+  list-style-type: none;
+}
+
+.category-item {
+  font-size: 24px;
+  font-weight: lighter;
+  margin: 0.5rem 0;
+}
+
+.category-item.active {
+  border: 1px solid white;
+  border-left: none;
+  border-right: none;
+  font-weight: bold;
+}
+
+.category-item > a {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
 }
 
 .container {
