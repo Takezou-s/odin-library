@@ -1,5 +1,3 @@
-const bookList = [];
-const bookTypes = [];
 const categoryItemTemplate = document.getElementById("category-item-template");
 const modalTemplate = document.getElementById("modal-template");
 const newBookFormTemplate = document.getElementById("new-book-form-template");
@@ -7,6 +5,9 @@ const bookCardTemplate = document.getElementById("book-card-template");
 
 const addButton = document.getElementById("add-button");
 const bookContainer = document.querySelector(".book-container");
+
+const bookList = [];
+const bookTypes = [];
 
 let modalBackdropEl;
 let modalCardEl;
@@ -25,34 +26,53 @@ function showModal(title, bodyContent) {
   document.body.append(modalBackdropEl, modalCardEl);
 }
 
+const formHelper = {
+  presentNode: function () {
+    if (!this.node) this.node = newBookFormEl.cloneNode(true);
+    return this.node;
+  },
+  newNode: function () {
+    this.node = newBookFormEl.cloneNode(true);
+    return this;
+  },
+  cancelButton: function () {
+    return this.node.querySelectorAll(".new-book-form__buttons>button")[1];
+  },
+  input: function (id) {
+    return this.node.querySelector(`#${id}`);
+  },
+};
+
+function init() {
+  modalBackdropEl = modalTemplate.content.querySelector(".modal-backdrop");
+  modalBackdropEl.addEventListener("click", closeModal);
+  modalCardEl = modalTemplate.content.querySelector(".modal-card");
+  newBookFormEl = newBookFormTemplate.content.querySelector("form");
+}
+
 function showNewBookForm(book) {
-  const formClone = newBookFormEl.cloneNode(true);
-  formClone.querySelectorAll(".new-book-form__buttons>button")[1].addEventListener("click", (event) => {
-    event.preventDefault();
-    closeModal();
-  });
-  formClone.querySelector("#pageCount").addEventListener("change", (event) => {
-    formClone.querySelector("#onPage").setAttribute("max", event.target.value);
-  });
-  formClone.querySelector("#status").addEventListener("change", (event) => {
-    return;
-    if (event.target.value !== "reading") {
-      formClone.querySelector("#onPage-container").classList.add("display-none");
-    } else {
-      formClone.querySelector("#onPage-container").classList.remove("display-none");
-    }
+  formHelper
+    .newNode()
+    .cancelButton()
+    .addEventListener("click", (event) => {
+      event.preventDefault();
+      closeModal();
+    });
+
+  formHelper.input("pageCount").addEventListener("change", (event) => {
+    formHelper.input("onPage").setAttribute("max", event.target.value);
   });
 
   if (book) {
     for (const key in book) {
-      const el = formClone.querySelector(`#${key}`);
+      const el = formHelper.input(`${key}`);
       if (el) {
         el.value = book[key];
       }
     }
   }
 
-  formClone.addEventListener("submit", (event) => {
+  formHelper.presentNode().addEventListener("submit", (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -95,7 +115,7 @@ function showNewBookForm(book) {
     }
     closeModal();
   });
-  showModal("New Book", formClone);
+  showModal("New Book", formHelper.presentNode());
 }
 
 function renderBook(book) {
@@ -149,13 +169,6 @@ function selectBookType(bookType) {
       element.parentElement.classList.add("active");
     }
   }
-}
-
-function init() {
-  modalBackdropEl = modalTemplate.content.querySelector(".modal-backdrop");
-  modalBackdropEl.addEventListener("click", closeModal);
-  modalCardEl = modalTemplate.content.querySelector(".modal-card");
-  newBookFormEl = newBookFormTemplate.content.querySelector("form");
 }
 
 // Ctor function for Book object.
