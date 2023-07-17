@@ -14,40 +14,58 @@ let modalCardEl;
 let newBookFormEl;
 let activeBookType;
 
-function closeModal() {
-  if (modalBackdropEl) modalBackdropEl.remove();
-  if (modalCardEl) modalCardEl.remove();
+class Modal {
+  constructor(backdrop, card) {
+    this.backdrop = backdrop;
+    this.card = card;
+    backdrop.addEventListener("click", this.hideModal.bind(this));
+  }
+
+  showModal(title, bodyContent) {
+    this.card.querySelector(".modal-card__header>h2").textContent = title;
+    this.card.querySelector(".modal-card__body").innerHTML = "";
+    this.card.querySelector(".modal-card__body").appendChild(bodyContent);
+    document.body.append(this.backdrop, this.card);
+  }
+
+  hideModal() {
+    if (this.backdrop) this.backdrop.remove();
+    if (this.card) this.card.remove();
+  }
 }
 
-function showModal(title, bodyContent) {
-  modalCardEl.querySelector(".modal-card__header>h2").textContent = title;
-  modalCardEl.querySelector(".modal-card__body").innerHTML = "";
-  modalCardEl.querySelector(".modal-card__body").appendChild(bodyContent);
-  document.body.append(modalBackdropEl, modalCardEl);
-}
+class Form {
+  static _refNode;
 
-const formHelper = {
-  presentNode: function () {
-    if (!this.node) this.node = newBookFormEl.cloneNode(true);
-    return this.node;
-  },
-  newNode: function () {
-    this.node = newBookFormEl.cloneNode(true);
-    return this;
-  },
-  cancelButton: function () {
+  static refNode(node) {
+    Form._refNode = node;
+  }
+  static createForm() {
+    return new Form(Form._refNode);
+  }
+
+  constructor(refNode) {
+    this.node = refNode.cloneNode(true);
+  }
+
+  get cancelButton() {
     return this.node.querySelectorAll(".new-book-form__buttons>button")[1];
-  },
-  input: function (id) {
+  }
+
+  input(id) {
     return this.node.querySelector(`#${id}`);
-  },
-};
+  }
+}
+
+let modal, form;
 
 function init() {
   modalBackdropEl = modalTemplate.content.querySelector(".modal-backdrop");
-  modalBackdropEl.addEventListener("click", closeModal);
   modalCardEl = modalTemplate.content.querySelector(".modal-card");
+  modal = new Modal(modalBackdropEl, modalCardEl);
+
   newBookFormEl = newBookFormTemplate.content.querySelector("form");
+  Form.refNode(newBookFormEl);
 }
 
 function showNewBookForm(book) {
